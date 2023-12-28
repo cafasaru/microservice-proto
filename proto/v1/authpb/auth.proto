@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "github.com/cafasaru/nats_starter/gen/authpb";
+
+message User {
+  string id = 1;
+  string username = 2;
+  string email = 3;
+  string password = 4;
+  // You can include other user-related fields here
+}
+
+message SignUpRequest {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+  // You can include other fields needed for sign-up
+}
+
+message SignUpResponse {
+  bool success = 1;
+  string message = 2;
+  // You can include other response fields as needed
+}
+
+message SignInRequest {
+  string username = 1;
+  string password = 2;
+  // You can include other fields needed for sign-in
+}
+
+message SignInResponse {
+  bool success = 1;
+  string token = 2;
+  string message = 3;
+  // You can include other response fields as needed
+}
+
+service AuthService {
+  rpc SignUp (SignUpRequest) returns (SignUpResponse);
+  rpc SignIn (SignInRequest) returns (SignInResponse);
+  // You can add more RPC methods for other authentication-related functionalities
+}
