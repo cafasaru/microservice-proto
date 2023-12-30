@@ -40,7 +40,7 @@ message SignInResponse {
 }
 
 service AuthService {
-  //rpc SignUp (SignUpRequest) returns (SignUpResponse);
+  rpc SignUp (SignUpRequest) returns (SignUpResponse);
   rpc SignIn (SignInRequest) returns (SignInResponse);
   // You can add more RPC methods for other authentication-related functionalities
 }
