@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package auth;
 
-option go_package = "github.com/cafasaru/nats_starter/gen/authpb";
+option go_package = "github.com/cafasaru/microservice/gen/authpb";
 
 message User {
   string id = 1;
@@ -33,13 +33,14 @@ message SignInRequest {
 
 message SignInResponse {
   bool success = 1;
-  string token = 2;
-  string message = 3;
+  string access_token = 2;
+  string refresh_token = 3;
+  string message = 4;
   // You can include other response fields as needed
 }
 
 service AuthService {
-  rpc SignUp (SignUpRequest) returns (SignUpResponse);
+  //rpc SignUp (SignUpRequest) returns (SignUpResponse);
   rpc SignIn (SignInRequest) returns (SignInResponse);
   // You can add more RPC methods for other authentication-related functionalities
 }
